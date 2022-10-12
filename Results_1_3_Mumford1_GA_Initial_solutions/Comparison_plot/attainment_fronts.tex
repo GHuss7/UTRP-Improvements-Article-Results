@@ -1,0 +1,204 @@
+\documentclass[crop=false]{standalone}
+%\documentclass{standalone}
+\usepackage{tikz} % To generate the plot from csv
+\usepackage{pgfplots}
+\usepackage{graphicx}
+\usepackage{subfig}
+\usepackage{float}
+\usepackage[section]{placeins} % getting figures below sections
+\usepackage{blindtext}
+\usepackage{siunitx}
+\usepgfplotslibrary{units} % Allows to enter the units nicely
+\usetikzlibrary{external} %https://tex.stackexchange.com/questions/1460/script-to-automate-externalizing-tikz-graphics
+\tikzexternalize[prefix=savedfigures/]
+
+\pgfplotsset{compat=newest} % Allows to place the legend below plot
+\usepackage{pgfplotstable}
+\usepgfplotslibrary{statistics}
+
+
+\begin{document}
+\pgfkeys{/pgf/number format/.cd,1000 sep={\,}}
+	
+\section{UTRP NSGAII Mandl6}
+%############################### UTRP NSGAII Attainment Front ##############################
+
+	\begin{figure}[htb!] % final undominated attainment front
+	\centering
+	\tikzsetnextfilename{UTRP_NSGAII_AF_compare}
+	\begin{tikzpicture} % Undominated attainment front "o"
+	\begin{axis}[
+	width=\linewidth, % Scale the plot to \linewidth
+	%title={Attainment front for the Mandl6 UTRP instance},
+	%xlabel={Average travel time [min]},
+	%ylabel={Total route time [min]},
+	xlabel={ATT [min]},
+	ylabel={TRT [min]},
+	%x tick label style={rotate=0,anchor=east}, % Display labels sideways
+	legend pos=north east,
+	ymajorgrids=false,
+	grid style=dashed,
+	x tick label style={/pgf/number format/.cd,1000 sep={\,}},
+	y tick label style={/pgf/number format/.cd,1000 sep={\,}}
+	]
+	
+	\addplot[
+	only marks,
+	color=blue,
+	mark=o, % *, x , +, |, o, asterisk, star
+	mark size = 2pt
+	]
+	table [x=f_1, y=f_2, col sep=comma, meta=]{../1_3_Mumford1_GA_Initial_solutions_20210715_222334 GA_Load_supplementing_pop_0/Pop_initial.csv};  
+	\addlegendentry{KSP-MMV-ICRSGP initial set}
+	
+	\addplot[
+	only marks,
+	color=green,
+	mark=triangle, % *, x , +, |, o, asterisk, star
+	mark size = 2pt
+	]
+	table [x=f_1, y=f_2, col sep=comma, meta=]{../1_3_Mumford1_GA_Initial_solutions_20210716_031159 GA_Load_supplementing_pop_1/Pop_initial.csv};  
+	\addlegendentry{Enhanced KSP-MMV-ICRSGP initial set}
+	
+	\addplot[
+	only marks,
+	color=darkgray,
+	mark=star, % *, x , +, |, o, asterisk, star
+	mark size = 2pt
+	]
+	table [x=f_1_ATT, y=f_2_TRT, col sep=comma]{Validation_data/Ahmed_etal_2019.csv};  
+	\addlegendentry{Ahmed \emph{et al.}\ (2019)}
+	
+	\addplot[
+	only marks,
+	color=red,
+	mark=+, % *, x , +, |, o, asterisk, star
+	mark size = 2pt
+	]
+	table [x=f_1_ATT, y=f_2_TRT, col sep=comma]{Validation_data/John_2016.csv};  
+	\addlegendentry{John (2016)}
+	
+	\addplot[
+	only marks,
+	color=cyan,
+	mark=x, % *, x , +, |, o, asterisk, star
+	mark size = 2pt
+	]
+	table [x=f_1_ATT, y=f_2_TRT, col sep=comma]{Validation_data/John_etal_2014.csv};  
+	\addlegendentry{John \emph{et al.}\ (2014)}
+	
+	\addplot[
+	only marks,
+	color=magenta,
+	mark=diamond, % *, x , +, |, o, asterisk, star
+	mark size = 2pt
+	]
+	table [x=f_1_ATT, y=f_2_TRT, col sep=comma]{Validation_data/Kilik_and_Gok_2014.csv};  
+	\addlegendentry{Kili{\c{c}} and G{\"{o}}k (2014)}
+	
+	\addplot[
+	only marks,
+	color=orange,
+	mark=asterisk, % *, x , +, |, o, asterisk, star
+	mark size = 2pt
+	]
+	table [x=f_1_ATT, y=f_2_TRT, col sep=comma]{Validation_data/Mumford_2013.csv};  
+	\addlegendentry{Mumford (2013)}	
+	
+	\end{axis}
+	\end{tikzpicture}
+	\caption[Attainment front for Mandl6 UTRP instance using the NSGAII]{Attainment front for the Mandl6 UTRP instance using the NSGAII.}
+	\label{fig:UTRP_SA_Mandl6}
+\end{figure}
+
+	\begin{figure}[htb!] % final undominated attainment front
+	\centering
+	\tikzsetnextfilename{UTRP_NSGAII_AF_compare_small}
+	\begin{tikzpicture} % Undominated attainment front "o"
+		\begin{axis}[
+			%width=\linewidth, % Scale the plot to \linewidth
+			%title={Attainment front for the Mandl6 UTRP instance},
+			%xlabel={Average travel time [min]},
+			%ylabel={Total route time [min]},
+			xlabel={ATT [min]},
+			ylabel={TRT [min]},
+			%x tick label style={rotate=0,anchor=east}, % Display labels sideways
+			%legend pos=north east,
+			legend columns=1,
+			legend style={at={(1.1,1)},anchor=north west}, %(<x>,<y>)
+			ymajorgrids=false,
+			grid style=dashed,
+			x tick label style={/pgf/number format/.cd,1000 sep={\,}},
+			y tick label style={/pgf/number format/.cd,1000 sep={\,}}
+			]
+			
+			\addplot[
+			only marks,
+			color=blue,
+			mark=o, % *, x , +, |, o, asterisk, star
+			mark size = 2pt
+			]
+			table [x=f_1, y=f_2, col sep=comma, meta=]{../1_3_Mumford1_GA_Initial_solutions_20210715_222334 GA_Load_supplementing_pop_0/Pop_initial.csv};  
+			\addlegendentry{KSP-MMV-ICRSGP initial set}
+			
+			\addplot[
+			only marks,
+			color=green,
+			mark=triangle, % *, x , +, |, o, asterisk, star
+			mark size = 2pt
+			]
+			table [x=f_1, y=f_2, col sep=comma, meta=]{../1_3_Mumford1_GA_Initial_solutions_20210716_031159 GA_Load_supplementing_pop_1/Pop_initial.csv};  
+			\addlegendentry{Enhanced KSP-MMV-ICRSGP initial set}
+			
+			\addplot[
+			only marks,
+			color=darkgray,
+			mark=star, % *, x , +, |, o, asterisk, star
+			mark size = 2pt
+			]
+			table [x=f_1_ATT, y=f_2_TRT, col sep=comma]{Validation_data/Ahmed_etal_2019.csv};  
+			\addlegendentry{Ahmed \emph{et al.}\ (2019)}
+			
+			\addplot[
+			only marks,
+			color=red,
+			mark=+, % *, x , +, |, o, asterisk, star
+			mark size = 2pt
+			]
+			table [x=f_1_ATT, y=f_2_TRT, col sep=comma]{Validation_data/John_2016.csv};  
+			\addlegendentry{John (2016)}
+			
+			\addplot[
+			only marks,
+			color=cyan,
+			mark=x, % *, x , +, |, o, asterisk, star
+			mark size = 2pt
+			]
+			table [x=f_1_ATT, y=f_2_TRT, col sep=comma]{Validation_data/John_etal_2014.csv};  
+			\addlegendentry{John \emph{et al.}\ (2014)}
+			
+			\addplot[
+			only marks,
+			color=magenta,
+			mark=diamond, % *, x , +, |, o, asterisk, star
+			mark size = 2pt
+			]
+			table [x=f_1_ATT, y=f_2_TRT, col sep=comma]{Validation_data/Kilik_and_Gok_2014.csv};  
+			\addlegendentry{Kili{\c{c}} and G{\"{o}}k (2014)}
+			
+			\addplot[
+			only marks,
+			color=orange,
+			mark=asterisk, % *, x , +, |, o, asterisk, star
+			mark size = 2pt
+			]
+			table [x=f_1_ATT, y=f_2_TRT, col sep=comma]{Validation_data/Mumford_2013.csv};  
+			\addlegendentry{Mumford (2013)}	
+			
+		\end{axis}
+	\end{tikzpicture}
+	\caption[Attainment front for Mandl6 UTRP instance using the NSGAII]{Attainment front for the Mandl6 UTRP instance using the NSGAII.}
+	\label{fig:UTRP_SA_Mandl6}
+\end{figure}
+
+\end{document}

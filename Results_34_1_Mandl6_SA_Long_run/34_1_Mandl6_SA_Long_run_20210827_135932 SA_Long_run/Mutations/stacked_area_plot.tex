@@ -1,0 +1,63 @@
+\documentclass[crop=false]{standalone}
+%https://tex.stackexchange.com/questions/288373/how-to-draw-stacked-area-chart
+\usepackage{pgfplots}
+\usepgfplotslibrary{dateplot}
+\pgfplotsset{compat=1.12}
+\usetikzlibrary{fillbetween}
+\usetikzlibrary{external}
+\tikzexternalize[prefix=savedfigures/]
+
+\begin{document}
+\pgfkeys{/pgf/number format/.cd,1000 sep={\,}}
+\tikzsetnextfilename{Stacked_area_mut}
+\begin{tikzpicture}[]
+    \begin{axis}[
+    legend style={at={(1.1,1)},anchor=north west}, %(<x>,<y>)
+    %date coordinates in=x,
+    table/col sep=comma,
+    %xticklabel style={rotate=90, anchor=near xticklabel},
+    ymin=0,
+    ymax=1,
+    %restrict y to domain=0:1,
+    %max space between ticks=20,
+    stack plots=y,%
+    area style,each nth point=100, filter discard warning=false, unbounded coords=discard,
+    xmin=0,
+    xmax=17451,
+    xlabel = Total iterations,
+    ylabel = Selection probability
+    ]
+
+\addplot [draw=blue, fill=blue!30!white] table [mark=none, x=Total_iterations,y=Intertwine_two
+] {Smoothed_Mutation_Ratios_for_Tikz.csv}
+    \closedcycle;
+    \addlegendentry{Exchange routes};
+
+\addplot [draw=red, fill=red!30!white] table [mark=none, x=Total_iterations,y=Add_vertex
+] {Smoothed_Mutation_Ratios_for_Tikz.csv}
+    \closedcycle;
+    \addlegendentry{Add vertex};
+
+\addplot [draw=yellow, fill=yellow!30!white] table [mark=none, x=Total_iterations,y=Delete_vertex
+] {Smoothed_Mutation_Ratios_for_Tikz.csv}
+    \closedcycle;
+    \addlegendentry{Delete vertex};
+
+\addplot [draw=darkgray, fill=darkgray!30!white] table [mark=none, x=Total_iterations,y=Invert_path_vertices
+] {Smoothed_Mutation_Ratios_for_Tikz.csv}
+    \closedcycle;
+    \addlegendentry{Invert vertices};
+
+\addplot [draw=green, fill=green!30!white] table [mark=none, x=Total_iterations,y=Insert_inside_vertex
+] {Smoothed_Mutation_Ratios_for_Tikz.csv}
+    \closedcycle;
+    \addlegendentry{Add inside vertex};
+
+\addplot [draw=magenta, fill=magenta!30!white] table [mark=none, x=Total_iterations,y=Delete_inside_vertex
+] {Smoothed_Mutation_Ratios_for_Tikz.csv}
+    \closedcycle;
+    \addlegendentry{Delete inside vertex};
+
+    \end{axis}
+    \end{tikzpicture}
+\end{document}

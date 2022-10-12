@@ -1,0 +1,48 @@
+total_demand,171080.0
+n,30
+wt,0
+tp,5
+ref_point_max_f1_ATT,32
+ref_point_min_f1_ATT,13
+ref_point_max_f2_TRT,700
+ref_point_min_f2_TRT,94
+walkFactor,3
+boardingTime,0
+alightingTime,0
+large_dist,10000
+alpha_const_inter,0.5
+con_r,12
+con_minNodes,2
+con_maxNodes,15
+con_N_nodes,30
+con_fleet_size,40
+con_vehicle_capacity,20
+con_lower_bound,0
+con_upper_bound,1
+method,GA
+termination_criterion,StoppingByEvaluations
+population_size,200
+generations,400
+number_of_runs,20
+crossover_probability,0.6
+mutation_probability,1
+mutation_threshold,0.01
+mutation_ratio,0.5
+gen_compare_HV,40
+HV_improvement_th,0.0001
+crossover_distribution_index,5
+mutation_distribution_index,10
+tournament_size,2
+max_evaluations,25000
+number_of_variables,12
+number_of_objectives,2
+Number_of_initial_solutions,10000
+begin_time,"07/15/2021, 22:55:18"
+Termination,By_evaluations
+end_time,"07/15/2021, 23:06:53"
+begin_time_gen,2021-07-15 23:06:34.916575
+generation,400
+end_time_gen,2021-07-15 23:06:53.562057
+duration,0:11:35.518643
+HV obtained,0.8112356351493538
+APD end,0

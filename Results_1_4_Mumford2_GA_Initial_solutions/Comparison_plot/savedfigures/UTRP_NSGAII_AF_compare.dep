@@ -1,0 +1,7 @@
+savedfigures/UTRP_NSGAII_AF_compare.pdf: "../1_4_Mumford2_GA_Initial_solutions_20211004_144739 GA_Long_run/Pop_initial.csv"
+savedfigures/UTRP_NSGAII_AF_compare.pdf: ../1_4_enhanced/Pop_initial.csv
+savedfigures/UTRP_NSGAII_AF_compare.pdf: Validation_data/Ahmed_etal_2019.csv
+savedfigures/UTRP_NSGAII_AF_compare.pdf: Validation_data/John_2016.csv
+savedfigures/UTRP_NSGAII_AF_compare.pdf: Validation_data/John_etal_2014.csv
+savedfigures/UTRP_NSGAII_AF_compare.pdf: Validation_data/Kilik_and_Gok_2014.csv
+savedfigures/UTRP_NSGAII_AF_compare.pdf: Validation_data/Mumford_2013.csv

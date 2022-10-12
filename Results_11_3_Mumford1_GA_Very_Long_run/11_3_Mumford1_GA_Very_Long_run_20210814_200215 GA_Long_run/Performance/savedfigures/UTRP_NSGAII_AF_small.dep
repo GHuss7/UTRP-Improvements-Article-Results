@@ -1,0 +1,6 @@
+savedfigures/UTRP_NSGAII_AF_small.pdf: ../Overall_Pareto_set.csv
+savedfigures/UTRP_NSGAII_AF_small.pdf: Validation_data/Ahmed_etal_2019.csv
+savedfigures/UTRP_NSGAII_AF_small.pdf: Validation_data/John_2016.csv
+savedfigures/UTRP_NSGAII_AF_small.pdf: Validation_data/John_etal_2014.csv
+savedfigures/UTRP_NSGAII_AF_small.pdf: Validation_data/Kilik_and_Gok_2014.csv
+savedfigures/UTRP_NSGAII_AF_small.pdf: Validation_data/Mumford_2013.csv
